@@ -26,7 +26,8 @@ def fund_account():
         trans = Transaction(amount = formAmount, user_id=current_user.id)
         db.session.add(trans)
         db.session.commit()
-        flash("Succesfuly funded account with" + str(formAmount))
+        # flash("Succesfuly funded account with " + str(formAmount))
+        return jsonify({'Succesfuly funded account with ': str(formAmount)})
     return render_template('fund_account.html', balance = balance, user=current_user) 
 
 @views.route('/transfer', methods=['GET', 'POST'])
@@ -47,8 +48,11 @@ def transfer():
             db.session.add(trans)
             db.session.commit()
             flash("Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email + " " + str(balance), category='success')
+            return jsonify({'success':
+            "Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email + " " + str(balance)})
         if formAmount is None or int(formAmount) > int(balance) or int(balance) < 0:
             balance = 0
             flash("Insufficient Balance.", category='error')
+            return jsonify({'error': 'Insufficient Balance.'})
     return render_template('transfer.html', balance = balance , user=current_user, user_list = users)
    

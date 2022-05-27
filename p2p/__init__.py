@@ -3,7 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from os import path
 from flask_login import LoginManager
 from flask_migrate import Migrate
-
+from flask_restful import Api, Resource
 db = SQLAlchemy()
 DB_NAME = "database.db"
 migrate = Migrate()
@@ -13,10 +13,10 @@ app.config['SECRET_KEY'] = 'Jesus'
 app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 # NEW DB
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://pqnexjbnmaflvxct:pbow0ixqwgryzte7@kutnpvrhom7lki7u.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/sooev4l4e59owan5'
-
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db.init_app(app)
 migrate.init_app(app, db)
+# app = Api(app)
 
 
 def create_database(app):
