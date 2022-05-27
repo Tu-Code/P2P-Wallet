@@ -47,8 +47,7 @@ def transfer():
             db.session.add(trans)
             db.session.commit()
             flash("Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email, category='success')
-            return jsonify({'success':
-            "Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email + " " + str(balance)})
+            return jsonify({'success': "Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email})
         if formAmount is None or int(formAmount) > int(balance) or int(balance) < 0:
             flash("Insufficient Balance.", category='error')
             return jsonify({'error': 'Insufficient Balance.'})

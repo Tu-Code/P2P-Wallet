@@ -15,8 +15,6 @@ app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 db.init_app(app)
 migrate.init_app(app, db)
-# app = Api(app)
-
 
 def create_database(app):
     if not path.exists('p2p/' + DB_NAME):
@@ -25,11 +23,8 @@ def create_database(app):
 from .views import views
 from .auth import auth
 
-# from .controllers import controllers
-
 app.register_blueprint(views, url_prefix='/')
 app.register_blueprint(auth, url_prefix='/')
-# app.register_blueprint(controllers, url_prefix='/')
 
 from .models import User
 

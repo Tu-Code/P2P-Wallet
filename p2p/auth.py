@@ -10,7 +10,7 @@ auth = Blueprint('auth', __name__)
 def login():
     if request.method == 'POST':
         email =request.form['email']
-        password = request.form.get['password']
+        password = request.form['password']
 
         user = User.query.filter_by(email=email).first()
         if user:
@@ -62,9 +62,6 @@ def signup():
             db.session.commit()
             print(user)
             login_user(new_user)
-            # flash('Account created!', category='success')
-            # # going back to views -> home
-            # return redirect(url_for('views.fund_account'))
             return jsonify({ 'response' : 'User ' + email + ' created' })
 
     return render_template('signup.html', user=current_user)

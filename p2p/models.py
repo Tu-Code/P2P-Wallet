@@ -1,7 +1,6 @@
 from . import db
 from sqlalchemy.dialects.mysql import INTEGER
 from flask_login import UserMixin
-from sqlalchemy.sql import func
 
 class Transaction(db.Model):
     __tablename__ = 'transaction'
