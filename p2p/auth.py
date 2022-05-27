@@ -18,7 +18,6 @@ def login():
                 
                 login_user(user, remember=True)
                 flash('Logged in succesfully!', category='success')
-                # return redirect(url_for('views.fund_account_check'))
                 return jsonify({'Logged in succesfully!':'success'})
             else:
                 flash('Incorrect Password', category='error')
@@ -43,7 +42,7 @@ def signup():
         password = request.form['password']
         phone = request.form['phone']
 
-        user = User.query.filter_by(email=email)
+        user = User.query.filter_by(email=email).first()
         if user:
             flash('Email already exists.', category='error')
             return jsonify({'error': 'Email already exists.'})

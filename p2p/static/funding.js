@@ -5,7 +5,7 @@ paymentForm.addEventListener("submit", payWithPaystack, false);
 
 function payWithPaystack(e) {
 
-  e.preventDefault();
+  // e.preventDefault();
   let handler = PaystackPop.setup({
     key: 'pk_test_f1bdf35e9e5ab3f840a73caaeefe6b6de5ed387d', // Replace with your public key
     email: document.getElementById("email").value,
@@ -21,10 +21,11 @@ function payWithPaystack(e) {
       $.ajax({
         type: "POST",
         url: '/fund_account',
-        data: response.reference,
+        data: {amount:amount , reference: response.reference},
         success: function(response){
           let message = 'Payment complete! Reference: ' + response.reference;
           alert(message);
+          console.log('check from JS')
         } 
       });
       

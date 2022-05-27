@@ -16,11 +16,12 @@ views = Blueprint('views', __name__)
 def fund_account():
     balance = 50000
     transactions =  Transaction.query.filter_by(user_id=current_user.id).all()
-    
+
     for x in transactions:
         balance = balance + x.amount
-    flash('im post')
     if request.method == 'POST':
+        flash('check')
+        print('check')
         formAmount = int(request.form.get('amount'))
         balance = balance + formAmount
         trans = Transaction(amount = formAmount, user_id=current_user.id)
@@ -41,7 +42,7 @@ def transfer():
         balance = balance + x.amount
     if request.method == 'POST':
         formAmount = int(request.form.get('amount'))
-        if balance >= formAmount:
+        if balance >= formAmount and len(users) > 1:
             balance = balance - formAmount
             user_choice = request.form.get('user_choice')   
             trans = Transaction(amount = (formAmount*-1), user_id=current_user.id)
@@ -54,5 +55,8 @@ def transfer():
             balance = 0
             flash("Insufficient Balance.", category='error')
             return jsonify({'error': 'Insufficient Balance.'})
+        if len(users) <= 1:
+            flash("No user chosen.", category='error')
+            return jsonify({'error': 'No user chosen.'})
     return render_template('transfer.html', balance = balance , user=current_user, user_list = users)
    
