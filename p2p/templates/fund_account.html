@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title %} Fund Account{% endblock %}
 {% block content %} 
-    <form  method='POST' id="paymentForm" url_for('fund_account_check')>
+    <form  method='POST' id="paymentForm">
 
       <div class="form-column">
         <div class="form-group col-md-6">
-          <span name='balance' name='balance' id='balance'>50000</span>
+         <span name='balance' id='balance'>{{ balance }}</span>
         </div>
 
         <div class="form-group col-md-6">

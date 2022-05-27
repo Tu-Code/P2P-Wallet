@@ -3,10 +3,10 @@
 {% block content %} 
     <form method='POST' id="transferForm">
      
-      <div class="form-col">
+      <div class="form-column">
         <div class="form-group col-md-6">
-          <span name='balance' id='balance'>Balance : NGN {{ balance }}</span>
-          {# <input type="text" class="form-control" name ='balance' id="balance" placeholder="Balance" value = `{{ balance }}` readonly> #}
+          <span name='trans_balance' id='trans_balance'>{{ balance }}</span>
+          {# <input name='trans_balance' id='trans_balance' value='50000' readonly> #}
         </div>
 
         <div class="form-group col-md-6">
@@ -255,7 +255,9 @@
           <select id='userNames' name='user_choice' class='form-control'>
             {% if user_list %}
                 {% for u in user_list %}
-                    <option value='{{u.id}}'>{{ u.email }}</option>
+                    {% if u.id != current_user.id %}
+                      <option value='{{u.id}}'>{{ u.email }}</option>
+                    {% endif %}
                 {% endfor %}
             {% else %}  
             <option >None</option>  

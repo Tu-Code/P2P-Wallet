@@ -58,6 +58,6 @@ def signup():
             login_user(new_user)
             flash('Account created!', category='success')
             # going back to views -> home
-            return redirect(url_for('views.fund_account_check'))
+            return redirect(url_for('views.fund_account'))
 
     return render_template('signup.html', user=current_user)
