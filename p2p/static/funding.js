@@ -3,7 +3,7 @@ const paymentForm = document.getElementById('paymentForm');
 
 paymentForm.addEventListener("submit", payWithPaystack, false);
 
-function payWithPaystack(e) {
+function payWithPaystack() {
 
   // e.preventDefault();
   let handler = PaystackPop.setup({
@@ -35,4 +35,3 @@ function payWithPaystack(e) {
   
   handler.openIframe();
 }
-

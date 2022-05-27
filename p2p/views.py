@@ -20,14 +20,12 @@ def fund_account():
     for x in transactions:
         balance = balance + x.amount
     if request.method == 'POST':
-        flash('check')
-        print('check')
         formAmount = int(request.form.get('amount'))
         balance = balance + formAmount
         trans = Transaction(amount = formAmount, user_id=current_user.id)
         db.session.add(trans)
         db.session.commit()
-        # flash("Succesfuly funded account with " + str(formAmount))
+        flash("Succesfuly funded account with " + str(formAmount))
         return jsonify({'Succesfuly funded account with ': str(formAmount)})
     return render_template('fund_account.html', balance = balance, user=current_user) 
 
