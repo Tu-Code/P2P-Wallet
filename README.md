@@ -1,6 +1,6 @@
 
 ## Simple P2P Wallet System
-The P2P wallet system is a fast, secure and easy way to make use of this web application; it enables users fund their personal accounts and transfer to other users within the system. This application utilizes the PayStack API
+The P2P wallet system is a fast, secure and easy way to make use of this web application; it enables users fund their personal accounts and transfer to other users within the system. This application utilizes the PayStack API.
 ## Feautures
 - Simple, intuitive and friendly user interface
 - Email based authentication system
