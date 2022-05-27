@@ -66,6 +66,6 @@ def signup():
             # flash('Account created!', category='success')
             # # going back to views -> home
             # return redirect(url_for('views.fund_account'))
-            return jsonify({ 'response' : 'User' + email + 'created' })
+            return jsonify({ 'response' : 'User ' + email + ' created' })
 
     return render_template('signup.html', user=current_user)
