@@ -14,7 +14,7 @@ views = Blueprint('views', __name__)
 @login_required
 
 def fund_account():
-    balance = 50000
+    balance = 0
     transactions =  Transaction.query.filter_by(user_id=current_user.id).all()
 
     for x in transactions:
