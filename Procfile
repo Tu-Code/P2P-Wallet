@@ -1,1 +1,1 @@
-web: gunicorn foodie:app
+web: gunicorn p2p:app

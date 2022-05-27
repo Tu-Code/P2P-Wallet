@@ -6,3 +6,4 @@ mysql
 flask_login
 flask_restful 
 flask_migrate
+gunicorn
