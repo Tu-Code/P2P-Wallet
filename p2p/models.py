@@ -1,5 +1,4 @@
 from . import db
-from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.mysql import INTEGER
 from flask_login import UserMixin
 from sqlalchemy.sql import func

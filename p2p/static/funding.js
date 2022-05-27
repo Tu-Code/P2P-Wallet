@@ -1,7 +1,10 @@
 
 const paymentForm = document.getElementById('paymentForm');
+
 paymentForm.addEventListener("submit", payWithPaystack, false);
+
 function payWithPaystack(e) {
+
   e.preventDefault();
   let handler = PaystackPop.setup({
     key: 'pk_test_f1bdf35e9e5ab3f840a73caaeefe6b6de5ed387d', // Replace with your public key
@@ -12,6 +15,7 @@ function payWithPaystack(e) {
       onClose: function(){
       alert('Window closed.');
     },
+
     callback: function(response){
 
       $.ajax({
