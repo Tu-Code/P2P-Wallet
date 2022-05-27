@@ -9,13 +9,12 @@ auth = Blueprint('auth', __name__)
 @auth.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
-        email = request.form['name']
+        email =request.form['email']
         password = request.form.get['password']
 
         user = User.query.filter_by(email=email).first()
         if user:
             if check_password_hash(user.password, password):
-                
                 login_user(user, remember=True)
                 flash('Logged in succesfully!', category='success')
                 return jsonify({'Logged in succesfully!':'success'})
