@@ -33,7 +33,7 @@ def fund_account():
 
 def transfer():
     users = User.query.all()
-    balance = 50000
+    balance = 0
     transactions =  Transaction.query.filter_by(user_id=current_user.id).all()
     
     for x in transactions:
@@ -50,7 +50,6 @@ def transfer():
             return jsonify({'success':
             "Succesfuly transfered " + str(formAmount) + " to " + users[int(user_choice) - 1].email + " " + str(balance)})
         if formAmount is None or int(formAmount) > int(balance) or int(balance) < 0:
-            balance = 0
             flash("Insufficient Balance.", category='error')
             return jsonify({'error': 'Insufficient Balance.'})
         if len(users) <= 1:
