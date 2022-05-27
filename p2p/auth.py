@@ -17,7 +17,7 @@ def login():
             if check_password_hash(user.password, password):
                 login_user(user, remember=True)
                 flash('Logged in succesfully!', category='success')
-                return jsonify({'Logged in succesfully!':'success'})
+                return redirect(url_for('views.fund_account'))
             else:
                 flash('Incorrect Password', category='error')
                 return jsonify({'error': 'Incorrect Password.'})
