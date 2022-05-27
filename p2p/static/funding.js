@@ -23,11 +23,11 @@ function payWithPaystack(e) {
         url: '/fund_account',
         data: response.reference,
         success: function(response){
-          handleResponse(response)
+          let message = 'Payment complete! Reference: ' + response.reference;
+          alert(message);
         } 
       });
-      let message = 'Payment complete! Reference: ' + response.reference;
-      alert(message);
+      
     }
     
   });
